@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Strategist - 全自動マーケット分析 Chrome拡張機能</title>
+<meta name="description" content="為替・日米金利・株価指数・日本株をAIがリアルタイム分析。Claude AIが毎日ストラテジスト視点で投資判断をサポートするChrome拡張機能です。">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;color:#1e293b;background:#f8fafc;line-height:1.7}
+header{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff;padding:60px 20px;text-align:center}
+header h1{font-size:2.2rem;font-weight:700;margin-bottom:10px;letter-spacing:0.04em}
+header p{font-size:1.1rem;color:#94a3b8;max-width:600px;margin:0 auto}
+nav{background:#1e293b;padding:12px 20px;display:flex;justify-content:center;gap:30px}
+nav a{color:#cbd5e1;text-decoration:none;font-size:14px;transition:color 0.2s}
+nav a:hover{color:#7da3f8}
+.container{max-width:860px;margin:0 auto;padding:50px 20px}
+.section-title{font-size:1.5rem;font-weight:700;color:#0f172a;margin-bottom:24px;padding-bottom:10px;border-bottom:2px solid #3b6ef5}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-bottom:50px}
+.feature-card{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border-top:3px solid #3b6ef5}
+.feature-card h3{font-size:1rem;font-weight:700;color:#1e293b;margin-bottom:10px}
+.feature-card p{font-size:14px;color:#64748b;line-height:1.7}
+.feature-icon{font-size:2rem;margin-bottom:12px}
+.data-section{background:#fff;border-radius:12px;padding:32px;margin-bottom:40px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.data-table{width:100%;border-collapse:collapse;margin-top:16px}
+.data-table th{background:#f1f5f9;padding:10px 14px;text-align:left;font-size:13px;color:#475569;font-weight:600}
+.data-table td{padding:10px 14px;font-size:14px;color:#334155;border-bottom:1px solid #f1f5f9}
+.data-table tr:last-child td{border-bottom:none}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.badge-free{background:#dcfce7;color:#16a34a}
+.badge-paid{background:#fef3c7;color:#d97706}
+.cta{background:linear-gradient(135deg,#3b6ef5,#7c3aed);color:#fff;border-radius:16px;padding:40px;text-align:center;margin-bottom:50px}
+.cta h2{font-size:1.6rem;font-weight:700;margin-bottom:12px}
+.cta p{font-size:15px;color:rgba(255,255,255,0.85);margin-bottom:24px}
+.btn{display:inline-block;background:#fff;color:#3b6ef5;font-weight:700;padding:12px 32px;border-radius:8px;text-decoration:none;font-size:15px;transition:all 0.2s}
+.btn:hover{background:#e0e7ff;transform:translateY(-1px)}
+.faq{margin-bottom:50px}
+.faq-item{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,0.05)}
+.faq-item h4{font-size:15px;font-weight:700;color:#1e293b;margin-bottom:8px}
+.faq-item p{font-size:14px;color:#64748b}
+footer{background:#0f172a;color:#94a3b8;text-align:center;padding:30px 20px;font-size:13px}
+footer a{color:#7da3f8;text-decoration:none}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AI Strategist</h1>
+  <p>為替・金利・株価をAIが毎日分析。機関投資家レベルのマーケット洞察をあなたの手元に。</p>
+</header>
+
+<nav>
+  <a href="index.html">ホーム</a>
+  <a href="#features">機能</a>
+  <a href="#data">データソース</a>
+  <a href="#faq">FAQ</a>
+  <a href="privacy.html">プライバシーポリシー</a>
+</nav>
+
+<div class="container">
+
+  <!-- 機能紹介 -->
+  <section id="features" style="margin-bottom:50px">
+    <div class="section-title">主な機能</div>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">&#127758;</div>
+        <h3>リアルタイム為替・金利モニタリング</h3>
+        <p>USD/JPY・EUR/JPY・CNY/JPYなど主要通貨ペアと日米金利差を一画面で確認。相場の変化を見逃しません。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#129504;</div>
+        <h3>AIストラテジスト日次レポート</h3>
+        <p>Claude AIがマクロ環境・リスクレベル・投資スタイル別の提言を毎日自動生成。機関投資家視点の分析を個人投資家に。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128200;</div>
+        <h3>投資マインドマップ管理</h3>
+        <p>投資スタイル・戦場・戦術・判断基準を6スロットで管理。AIが最適なポートフォリオ分散案を提案します。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128197;</div>
+        <h3>Googleカレンダー自動連携</h3>
+        <p>決算・配当・優待・FOMC等の重要イベントをAIが自動生成してGoogleカレンダーに直接登録。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#127981;</div>
+        <h3>米国経済指標トラッキング</h3>
+        <p>FRED（セントルイス連銀）からFF金利・CPI・GDP・失業率など30系列を自動収集・蓄積。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128179;</div>
+        <h3>ポートフォリオ管理</h3>
+        <p>保有銘柄・資産配分・地域配分を登録してAIと連携。運用方針に沿った具体的なアクションプランを提案。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- データソース -->
+  <section id="data" style="margin-bottom:50px">
+    <div class="section-title">使用データソース</div>
+    <div class="data-section">
+      <p style="font-size:14px;color:#64748b;margin-bottom:16px">信頼性の高い公的・商業データソースを組み合わせています。</p>
+      <table class="data-table">
+        <tr><th>データソース</th><th>取得データ</th><th>料金</th></tr>
+        <tr><td>Yahoo Finance</td><td>為替・株価指数・商品先物</td><td><span class="badge badge-free">無料</span></td></tr>
+        <tr><td>FRED（セントルイス連銀）</td><td>FF金利・CPI・GDP・雇用統計など30系列</td><td><span class="badge badge-free">無料</span></td></tr>
+        <tr><td>J-Quants（JPX）</td><td>日本株日足・財務・空売り比率</td><td><span class="badge badge-paid">任意有料</span></td></tr>
+        <tr><td>Claude AI（Anthropic）</td><td>AIレポート生成・マインドマップ分析</td><td><span class="badge badge-paid">従量課金</span></td></tr>
+        <tr><td>Google Calendar API</td><td>イベント自動登録</td><td><span class="badge badge-free">無料</span></td></tr>
+        <tr><td>Google Sheets API</td><td>データ自動同期</td><td><span class="badge badge-free">無料</span></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>今すぐ無料で始める</h2>
+    <p>基本機能はYahoo Finance・FREDで完全無料。Claude APIとJ-Quantsは任意で拡張できます。</p>
+    <a class="btn" href="#">Chrome拡張機能をインストール</a>
+  </div>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="section-title">よくある質問</div>
+    <div class="faq-item">
+      <h4>無料で使えますか？</h4>
+      <p>はい。Yahoo Finance・FREDデータを使った基本的な為替・金利・指数モニタリングは完全無料です。AIレポート生成にはClaude APIキー（Anthropic社の従量課金）が必要です。</p>
+    </div>
+    <div class="faq-item">
+      <h4>APIキーはどこで取得しますか？</h4>
+      <p>Claude APIはAnthropic（console.anthropic.com）、J-Quants APIはJPX（jpx-jquants.com）、FREDはセントルイス連銀（fredaccount.stlouisfed.org）でそれぞれ無料登録して取得できます。</p>
+    </div>
+    <div class="faq-item">
+      <h4>データはどこに保存されますか？</h4>
+      <p>すべてのデータはお使いのPC上（Chrome拡張機能のローカルストレージおよびSQLiteデータベース）に保存されます。外部サーバーへの個人情報送信は行いません。</p>
+    </div>
+    <div class="faq-item">
+      <h4>投資助言になりますか？</h4>
+      <p>本ツールは情報提供・分析支援を目的としており、投資勧誘・助言ではありません。実際の投資判断はご自身の責任で行ってください。</p>
+    </div>
+    <div class="faq-item">
+      <h4>Googleカレンダー連携に費用はかかりますか？</h4>
+      <p>Google Calendar APIは個人利用の範囲では完全無料です。初回のみGoogle Cloud ConsoleでのOAuth設定が必要です（詳細はアプリ内ガイドを参照）。</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>AI Strategist &copy; 2026 &nbsp;|&nbsp; <a href="privacy.html">プライバシーポリシー</a></p>
+  <p style="margin-top:8px;font-size:12px">本サービスはAnthropic、JPX、Federal Reserve Bank of St. Louis、Google等の公開APIを使用しています。</p>
+</footer>
+
+</body>
+</html>
